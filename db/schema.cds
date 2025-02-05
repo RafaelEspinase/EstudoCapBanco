@@ -5,7 +5,6 @@ namespace sap.capire.banks;
 entity Accounts : cuid, managed {  
 customer      : Association to Customers;
 key ID        : String  @title : 'Title';
-balance       : String;
 }
 
 entity Customers : managed { 
@@ -27,12 +26,15 @@ streetAddress : String;
 }
 
 entity Extract : cuid, managed {
-key ID        : String; 
-customer      : Association to Customers;
+key ID        : String;
 account       : Association to Accounts;
 date          : type of managed:createdAt;
-lastBalance   : String;
-newBalance    : String;
+operation     : String enum {
+    deposit = 'D';
+    withdrawal = 'W'; 
+    transfer = 'T';
+};
+vlueOperation : String;
 }
 
 type EMailAddress : String;
