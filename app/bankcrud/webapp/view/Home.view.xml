@@ -14,22 +14,22 @@
 		<u:headerTitle>
 			<u:ObjectPageDynamicHeaderTitle>
 				<u:expandedHeading>
-					<m:Title text="{homeModel>/customer/firstName} {homeModel>/customer/lastName}" wrapping="true"/>
+					<m:Title text="{accountModel>/customer/firstName} {accountModel>/customer/lastName}" wrapping="true"/>
 				</u:expandedHeading>
 
 				<u:snappedHeading>
 					<m:FlexBox fitContainer="true" alignItems="Center">
 						<m:Avatar class="sapUiTinyMarginEnd"/> <!-- src="./test-resources/sap/uxap/images/imageID_275314.png"  -->
-						<m:Title text="{homeModel>/customer/lastName}" wrapping="true" />
+						<m:Title text="{accountModel>/customer/lastName}" wrapping="true" />
 					</m:FlexBox>
 				</u:snappedHeading>
 
 				<u:expandedContent>
-					<m:Text text="{homeModel>/customer_ID}"/>
+					<m:Text text="{accountModel>/customer_ID}"/>
 				</u:expandedContent>
 
 				<u:snappedContent>
-					<m:Text text="{homeModel>/customer_ID}"/>
+					<m:Text text="{accountModel>/customer_ID}"/>
 				</u:snappedContent>
 
 				<u:snappedTitleOnMobile>
@@ -50,8 +50,8 @@
 				<m:Avatar class="sapUiSmallMarginEnd" displaySize="L" />
 
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:Link text="{homeModel>/customer/phone}"/>
-					<m:Link text="{homeModel>/customer/email}"/>
+					<m:Link text="{accountModel>/customer/phone}"/>
+					<m:Link text="{accountModel>/customer/email}"/>
 				</layout:VerticalLayout>
 
 				<layout:HorizontalLayout class="sapUiSmallMarginBeginEnd">
@@ -68,7 +68,7 @@
 				</layout:VerticalLayout> -->
 
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:Label text="{homeModel>/customer/addresses/results/0/city}"/>
+					<m:Label text="{accountModel>/customer/addresses/results/0/city}"/>
 				</layout:VerticalLayout>
 			</m:FlexBox>
 		</u:headerContent>
@@ -83,32 +83,32 @@
                     </u:ObjectPageSubSection>
                 </u:subSections>
 			</u:ObjectPageSection>
-            <u:ObjectPageSection titleUppercase="false" id="extract" title="Extrato">
+            <u:ObjectPageSection titleUppercase="false" id="extract" title="Extrato" >
                 <u:subSections>
                     <u:ObjectPageSubSection id="subSectionExtract" titleUppercase="false">
                         <u:blocks>
-                            <m:Table showNoData="true" id="tableExtract" items="{path: '/Accounts'}" sticky="ColumnHeaders" growing="true" growingScrollToLoad="true"> <!-- items="{path: 'jobMonitoring>/'}" -->
+                            <m:Table showNoData="true" id="tableExtract" items="{path: 'extractModel>/'}" sticky="ColumnHeaders" growing="true" growingScrollToLoad="true"> <!-- items="{path: 'jobMonitoring>/'}" -->
                                 <m:columns class="sapUiSmallMarginTop">
                                     <m:Column hAlign="Center">
-                                        <m:Label text="Status"/>
+                                        <m:Label text="ID"/>
                                     </m:Column>
                                     <m:Column hAlign="Center">
-                                        <m:Label text="Nome"/>
+                                        <m:Label text="Data"/>
                                     </m:Column>
                                     <m:Column hAlign="Center">
-                                        <m:Label text="Data Inicial"/>
+                                        <m:Label text="Operação"/>
                                     </m:Column>
                                     <m:Column hAlign="Center">
-                                        <m:Label text="Data Final"/>
+                                        <m:Label text="Valor"/>
                                     </m:Column>
                                 </m:columns>
                                 <m:items>
                                 <m:ColumnListItem vAlign="Middle" type="Active"><!--app:OrderId="{SalesOrder}"-->
                                     <m:cells>
-                                    <m:Text text="{path: 'ID'}" wrapping="false"/>
-                                    <m:Text text="{ID}" wrapping="false"/>
-                                    <m:Text text="Data" wrapping="false"/>
-                                    <m:Text text="Data" wrapping="false"/>
+                                    <m:Text text="{path: 'extractModel>ID'}" wrapping="false"/><!--ID-->
+                                    <m:Text text="{path: 'extractModel>date', formatter: '.formatter.convertDateTime'}" wrapping="false"/><!--date-->
+                                    <m:Text text="{path: 'extractModel>operation'}" wrapping="false"/><!--operation-->
+                                    <m:Text text="{path: 'extractModel>vlueOperation', formatter: '.formatter.convertValueBRL'}" wrapping="false"/><!--vlueOperation-->
                                     </m:cells>
                                 </m:ColumnListItem>
                                 </m:items>

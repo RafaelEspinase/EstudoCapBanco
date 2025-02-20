@@ -1,1 +1,6 @@
-ID,customer_ID,account_ID,date,lastBalance,newBalance,createdAt,createdBy,modifiedAt,modifiedBy
+ID,account_ID,date,operation,vlueOperation
+1,3b23bb4b-4ac7-4a24-ac02-aa10cabd842c,04/12/2024,D,2500,00
+2,3b23bb4b-4ac7-4a24-ac02-aa10cabd842c,04/12/2024,W,500,00
+3,3b23bb4b-4ac7-4a24-ac02-aa10cabd842c,04/12/2024,D,1235,50
+4,3b23bb4b-4ac7-4a24-ac02-aa10cabd842c,04/12/2024,W,750,37
+5,3b23bb4b-4ac7-4a24-ac02-aa10cabd842c,04/12/2024,W,485,13
