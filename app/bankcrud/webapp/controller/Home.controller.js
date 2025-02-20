@@ -1,10 +1,44 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-], (Controller) => {
+    "sap/ui/core/mvc/Controller",
+	"sap/ui/model/Filter",
+	"sap/ui/model/FilterOperator",
+	"sap/ui/model/json/JSONModel",
+], (Controller,
+	Filter,
+	FilterOperator,
+	JSONModel,) => {
     "use strict";
 
     return Controller.extend("bankcrud.controller.Home", {
-        onInit() {
+        async onInit() {
+            let dataAccounts = await this.onLoadAccounts();
+            this.getView().setModel(new JSONModel(dataAccounts), "homeModel");
+        },
+        async onLoadAccounts(){
+            var oModel = this.getOwnerComponent().getModel(); 
+            let filter = new Filter("ID", FilterOperator.EQ, "3b23bb4b-4ac7-4a24-ac02-aa10cabd842c");
+
+            return new Promise(function (resolve, reject) {
+                oModel.read("/Accounts", {
+                    filters: [filter],
+                    urlParameters: {
+                        "$expand": [
+                            "customer", 
+                            "customer/addresses",
+                        ].join(',') // Certifique-se de que o nome da entidade está correto
+                    },
+                    success: function (oData) {
+                        resolve(oData.results[0]);
+                    },
+                    error: function (oError) {
+                        const errModel = {
+                            Error: oError.responseText,
+                            Entity: '/Accounts'
+                        };
+                        reject(errModel);
+                    }
+                });
+            });
         }
     });
 });

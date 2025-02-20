@@ -8,7 +8,8 @@
   "dependencies": {
     "@sap/cds": "^8",
     "express": "^4",
-    "@cap-js/hana": "^1"
+    "@cap-js/hana": "^1",
+    "@cap-js-community/odata-v2-adapter": "^1.14.0"
   },
   "devDependencies": {
     "@cap-js/cds-types": "^0.8.0",
@@ -23,6 +24,9 @@
     "undeploy": "cf undeploy Bank-CRUD --delete-services --delete-service-keys --delete-service-brokers",
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
     "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+  },
+  "cov2ap": {
+    "plugin": true
   },
   "cds": {
     "sql": {

@@ -14,22 +14,22 @@
 		<u:headerTitle>
 			<u:ObjectPageDynamicHeaderTitle>
 				<u:expandedHeading>
-					<m:Title text="Denise Smith" wrapping="true"/>
+					<m:Title text="{homeModel>/customer/firstName} {homeModel>/customer/lastName}" wrapping="true"/>
 				</u:expandedHeading>
 
 				<u:snappedHeading>
 					<m:FlexBox fitContainer="true" alignItems="Center">
 						<m:Avatar class="sapUiTinyMarginEnd"/> <!-- src="./test-resources/sap/uxap/images/imageID_275314.png"  -->
-						<m:Title text="Denise Smith" wrapping="true" />
+						<m:Title text="{homeModel>/customer/lastName}" wrapping="true" />
 					</m:FlexBox>
 				</u:snappedHeading>
 
 				<u:expandedContent>
-					<m:Text text="Senior UI Developer"/>
+					<m:Text text="{homeModel>/customer_ID}"/>
 				</u:expandedContent>
 
 				<u:snappedContent>
-					<m:Text text="Senior UI Developer"/>
+					<m:Text text="{homeModel>/customer_ID}"/>
 				</u:snappedContent>
 
 				<u:snappedTitleOnMobile>
@@ -38,7 +38,7 @@
 
 				<u:actions>
 					<m:Button text="Edit" type="Emphasized"/>
-					<m:Button type="Transparent" text="Delete"/>
+					<m:Button type="Transparent" text="Delete" press="teste"/>
 					<m:Button type="Transparent" text="Copy"/>
 					<m:OverflowToolbarButton icon="sap-icon://action" type="Transparent" text="Share" tooltip="action"/>
 				</u:actions>
@@ -50,8 +50,8 @@
 				<m:Avatar class="sapUiSmallMarginEnd" displaySize="L" />
 
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:Link text="+33 6 4512 5158"/>
-					<m:Link text="DeniseSmith@sap.com"/>
+					<m:Link text="{homeModel>/customer/phone}"/>
+					<m:Link text="{homeModel>/customer/email}"/>
 				</layout:VerticalLayout>
 
 				<layout:HorizontalLayout class="sapUiSmallMarginBeginEnd">
@@ -59,16 +59,16 @@
 					<m:Image src="./test-resources/sap/uxap/images/Twitter.png" class="sapUiSmallMarginBegin"/> -->
 			    </layout:HorizontalLayout>
 
-				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+				<!-- <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 					<m:Label text="Hello! I am Denise and I use UxAP"/>
 					<m:VBox>
 						<m:Label text="Achieved goals"/>
 						<m:ProgressIndicator percentValue="30" displayValue="30%"/>
 					</m:VBox>
-				</layout:VerticalLayout>
+				</layout:VerticalLayout> -->
 
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<m:Label text="San Jose, USA"/>
+					<m:Label text="{homeModel>/customer/addresses/results/0/city}"/>
 				</layout:VerticalLayout>
 			</m:FlexBox>
 		</u:headerContent>
@@ -87,7 +87,7 @@
                 <u:subSections>
                     <u:ObjectPageSubSection id="subSectionExtract" titleUppercase="false">
                         <u:blocks>
-                            <m:Table showNoData="true" id="tableSalesOrder"  sticky="ColumnHeaders" growing="true" growingScrollToLoad="true"> <!-- items="{path: 'jobMonitoring>/'}" -->
+                            <m:Table showNoData="true" id="tableExtract" items="{path: '/Accounts'}" sticky="ColumnHeaders" growing="true" growingScrollToLoad="true"> <!-- items="{path: 'jobMonitoring>/'}" -->
                                 <m:columns class="sapUiSmallMarginTop">
                                     <m:Column hAlign="Center">
                                         <m:Label text="Status"/>
@@ -105,8 +105,8 @@
                                 <m:items>
                                 <m:ColumnListItem vAlign="Middle" type="Active"><!--app:OrderId="{SalesOrder}"-->
                                     <m:cells>
-                                    <m:Text text="Status" wrapping="false"/>
-                                    <m:Text text="Nome" wrapping="false"/>
+                                    <m:Text text="{path: 'ID'}" wrapping="false"/>
+                                    <m:Text text="{ID}" wrapping="false"/>
                                     <m:Text text="Data" wrapping="false"/>
                                     <m:Text text="Data" wrapping="false"/>
                                     </m:cells>
