@@ -29,6 +29,18 @@ sap.ui.define([], function () {
             });
 
             return(valueFormated); 
+        },
+
+        formatOperation: function (op){
+            if(op == "D"){
+                return "Deposito"
+            }
+            else if(op == "W"){
+                return "Saque"
+            }
+            else if(op == "T"){
+                return "Transferencia"
+            }
         }
     };
   });

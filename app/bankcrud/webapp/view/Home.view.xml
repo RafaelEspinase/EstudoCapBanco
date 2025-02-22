@@ -107,8 +107,8 @@
                                     <m:cells>
                                     <m:Text text="{path: 'extractModel>ID'}" wrapping="false"/><!--ID-->
                                     <m:Text text="{path: 'extractModel>date', formatter: '.formatter.convertDateTime'}" wrapping="false"/><!--date-->
-                                    <m:Text text="{path: 'extractModel>operation'}" wrapping="false"/><!--operation-->
-                                    <m:Text text="{path: 'extractModel>vlueOperation', formatter: '.formatter.convertValueBRL'}" wrapping="false"/><!--vlueOperation-->
+                                    <m:Text text="{path: 'extractModel>operation', formatter: '.formatter.formatOperation'}" wrapping="false"/><!--operation-->
+									<m:Text text="{path: 'extractModel>vlueOperation', formatter: '.formatter.convertValueBRL'}" wrapping="false"/><!--vlueOperation-->
                                     </m:cells>
                                 </m:ColumnListItem>
                                 </m:items>
